@@ -51,29 +51,15 @@ unsigned char *RC4_Init(){
 // Method to initialize RC4 and then to
 // write the output in the file
 void Keygen(int period){
-	FILE *fp ;
-
-	// Open the file to write
-	fp = fopen("keygen.key", "wb") ;
-	if(fp == NULL){
-		fprintf(stderr, "File could not be opened\n") ;
-		return ;
-	}
-	
 	
 	for (int i = 0; i < period ; ++i){
 		RC4_Init() ;
 		// Write this permutation in the file
-		S[26] = '\n' ;
-		int num_bytes = fwrite(S, 1, 27, fp) ;
-		if (num_bytes < 0){
-			fprintf(stderr, "File write error\n") ;
-			return ;
-		}
+		S[26] = '\0' ;
+		printf("%s\n", S) ;
 
 	}
 
-	fclose(fp) ;
 
 }
 
