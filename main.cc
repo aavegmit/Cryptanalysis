@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "functions.h"
 
 using namespace std ;
 
@@ -202,13 +203,16 @@ int main(int argc, char *argv[]){
 
 	// Command line parsing done, now call respective methods
 	if (choice == 1){
-		printf("Keygen selected with period: %s\n", period) ;
+		int periodInt = atoi(period); 
+		if (periodInt <= 0)
+			usage() ;
+		Keygen(periodInt) ;
 	}
 	else if(choice == 2){
 		printf("crypt selected with keyfile: %s and file %s\n", keyfile, inpF) ;
 	}
 	else if(choice == 3){
-		printf("invkey selected with keyfile: %s\n", inpKeyfile) ;
+		InvKeygen(inpKeyfile) ;
 	}
 	else if(choice == 4){
 		printf("histo selected with period: %s, which %s and file: %s\n", period, which, inpFile) ;
