@@ -209,7 +209,7 @@ int main(int argc, char *argv[]){
 		Keygen(periodInt) ;
 	}
 	else if(choice == 2){
-		printf("crypt selected with keyfile: %s and file %s\n", keyfile, inpF) ;
+		Crypt(keyfile, inpF) ;
 	}
 	else if(choice == 3){
 		InvKeygen(inpKeyfile) ;
