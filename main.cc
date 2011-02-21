@@ -215,10 +215,19 @@ int main(int argc, char *argv[]){
 		InvKeygen(inpKeyfile) ;
 	}
 	else if(choice == 4){
-		printf("histo selected with period: %s, which %s and file: %s\n", period, which, inpFile) ;
+		int periodInt = atoi(period); 
+		if (periodInt <= 0)
+			usage() ;
+		int whichInt = atoi(which);
+			if (whichInt <= 0)
+				usage() ;
+		Histo(periodInt, whichInt, inpFile) ;
 	}
 	else if(choice == 5){
-		printf("solve selected with l: %s, file: %s\n", max_t, inpFile) ;
+		int max_tInt = atoi(max_t) ;
+		if (max_tInt <= 0)
+			usage() ;
+		Solve(max_tInt, inpFile) ;
 	}
 	else
 		usage() ;
