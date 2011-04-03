@@ -1,0 +1,48 @@
+							Aaveg Mittal
+							aavegmit@usc.edu
+							Homework4
+
+. Design
+        . There are total 7 files 6 source file(main.cc, crypt.cc, keygen.cc, invkeygen.cc solve.cc histo.cc) and 1 header file(main.h).
+        
+        main.cc: 
+                . mainly contains the general code, such as userinput parsing & then calling the appropriote function. 
+
+        function.cc: 
+                .unsigned char *RC4_Init() 
+		  	mainly contains the code for key generation.
+                  	this function is called when the 1st commandline argument to the function is: keygen.
+                  	its main responsibily is to take period as argument & then produce the final key using the rc4 & md5.
+		
+        	.Crypt(char *keyfile, char *inpF)
+                  mainly contains the code for file encryption.
+                   It is called when the 1st commandline argument to the function is: crypt.
+                   This function encrypt all lowercase letters using the key file.
+        
+        	. void Histo(int period, int which, char *inpFile)
+                   mainly contains the code for producing frequency of letters in cipher text that can be used for cryptanalysis.
+                   this function takes file and print the frequency of letters at index, index+T, index_2T..and so on
+
+		. InvKeygen(char *inpF)
+			takes the encrytion key file & produce the decyrption key.
+
+        	.void Solve(int max_t, char *inpF)
+                        prints information that can be used to analyze cipertext to perform cryptanalysis.
+                        it implemets three method kasiski, average index of coincidence & autocorralation method to produce all the data.
+                        
+
+2.      Testing
+        1. Please follow the instruction mentioned on homework 2 page.
+
+3. Cryptanalysis Report
+        1. mystery1.ct
+                T=7
+                key is in mystery1.invkeys file.
+        
+        2. mystery2.ct
+                T=19
+                only able to find T, not able to find the correct key to decrypt the file.
+
+        method use of cryptanalysis:
+                started with searching of single letter words, then letter with appostrophs, then used frequenct of letters to guess some letters , also used diagram & tiagram statisicks to finally develop the key for mystery1.ct file.
+
