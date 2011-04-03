@@ -88,13 +88,13 @@ void InvKeygen(char *inpF){
 
 		// Read one line
 		int bytes_read = fread(buffer,1 , 27, fp) ;
-		if (bytes_read){
+		if (bytes_read >= 26){
 
 			// If last character is not a new line then report error and exit
-			if(buffer[26] != '\n'){
-				fprintf(stderr, "Malformed keyfile\n");
-				return ;
-			}
+//			if(buffer[26] != '\n'){
+//				fprintf(stderr, "Malformed keyfile\n");
+//				return ;
+//			}
 			for(int i=0 ; i < 26; ++i){
 				InvKey[buffer[i] - 97] = i+97 ;
 			}
@@ -200,6 +200,9 @@ void Crypt(char *keyfile, char *inpF){
 				}
 				if(buffer[i] >= 0x61 && buffer[i] <= 0x7a){
 					outBuf[i] = key[periodCtr % period][buffer[i] - 97] ;
+//					if(outBuf[i] == '0')
+//						outBuf[i] = buffer[i] - 32 ;
+					
 				}
 				else{
 					// Not a lowercase english alphabet
